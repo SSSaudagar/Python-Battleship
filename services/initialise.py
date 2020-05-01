@@ -8,7 +8,7 @@ def initialiseShips(player):
         player.board.drawBoardShip()
         ship.changeOrientation(input("Please enter ship orientation (v/h):"))
         while not player.board.insertShip(ship,int(input("Enter the position: "))):
-            print("Incorrent Input.")
+            print("Incorrect Input.")
         clearScreen()
 
     print("Final Board:")

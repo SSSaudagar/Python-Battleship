@@ -14,6 +14,9 @@ initPlayer(game)
 initPlayer(game)
 
 while not game.winner():
+    print(game.p1.getPlayerHealth(),game.p2.getPlayerHealth(),game.winner())
+    playerReady(game)
     playerTurn(game)
+
     
 print("{} is the winner".format(game.winner()))

@@ -14,7 +14,7 @@ class Game(object):
     def winner(self):
         if self.p1.getPlayerHealth() == 0:
             return self.p2.name
-        elif self.p1.getPlayerHealth() == 0:
+        elif self.p2.getPlayerHealth() == 0:
             return self.p1.name
         else:
             return False

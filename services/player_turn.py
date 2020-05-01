@@ -2,7 +2,7 @@ from services.ready import playerReady
 from services.helpers import clearScreen
 
 def playerTurn(game):
-    playerReady(game)
+    
     print("Current Player: {}".format(game.curr.name))
     print("Player Health: {}".format(game.curr.getPlayerHealth()))
     print("Your Ship Board:")

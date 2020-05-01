@@ -11,9 +11,9 @@ class Ship(object):
         self.status = 1
         
     def changeOrientation(self,orientation):
-        if orientation[0].capitalize() == "V":
+        if orientation and orientation[0].capitalize() == "V":
             self.orientation = 1
-        elif orientation[0].capitalize() == "H":
+        elif orientation and orientation[0].capitalize() == "H":
             self.orientation = 0
         else:
             print("Incorrect Orientation: Orientation could not be changed. Current orientation is {}".format("vertical" if self.orientation else "horizontal"))

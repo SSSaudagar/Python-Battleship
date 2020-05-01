@@ -14,18 +14,18 @@ class Board(object):
     def insertShip(self,ship,position):
         row,column = self.getRC(position)
         currRC = lambda x: [row+x,column] if (ship.orientation) else [row,column+x]
+        def reset(x):
+            for j in range(x):
+                r1,c1 = currRC(j)
+                self.board[r1][c1][1] = None
         for i in range(ship.size):
             r,c = currRC(i)
             if r>= self.rows or c>= self.columns:
-                for j in range(i):
-                    r1,c1 = currRC(j)
-                    self.board[r1][c1][1] = None
+                reset(i)
                 print("Ship Out of bounds")
                 return False
             elif self.board[r][c][1] != None:
-                for j in range(i):
-                    r1,c1 = currRC(j)
-                    self.board[r1][c1][1] = None
+                reset(i)
                 print("Ship already exists at this position")
                 return False
             else:

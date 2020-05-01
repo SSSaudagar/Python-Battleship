@@ -13,7 +13,6 @@ clearScreen()
 initPlayer(game)
 initPlayer(game)
 
-
 while not game.winner():
     playerTurn(game)
     

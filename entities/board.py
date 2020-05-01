@@ -39,11 +39,11 @@ class Board(object):
         if self.board[r][c][0] == 'e':
             if self.board[r][c][1] is None:
                 self.board[r][c][0] = 'm'
-                print('Attack Missed')
+                print('\nAttack Missed at position {}'.format(position))
                 return
             else:
                 self.board[r][c][0] = 'h'
-                print("Ship Hit")
+                print("\nShip Hit at position {}".format(position))
                 self.board[r][c][1].hit()
             return True
         else:

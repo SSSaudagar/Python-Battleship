@@ -1,6 +1,7 @@
 from config import player_ships
 from entities.board import Board
 from entities.ship import Ship
+from services.ready import playerReady
 
 class Player(object):
     def __init__(self,name):

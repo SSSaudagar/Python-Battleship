@@ -1,4 +1,5 @@
 from services.helpers import clearScreen
+from services.ready import playerReady
 
 def initialiseShips(player):
     for ship in player.ships:
@@ -14,3 +15,8 @@ def initialiseShips(player):
     player.board.drawBoardShip()
     input("Press enter to continue:")
     clearScreen()
+
+def initPlayer(game):
+    playerReady(game)
+    initialiseShips(game.curr)
+    game.changeCurrentPlayer()

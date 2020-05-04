@@ -7,9 +7,10 @@ def initialiseShips(player):
         print("Current Player: "+player.name)
         print("Insert Ship: {} \nLength: {} \nCurrent Board:".format(ship.shipName, ship.size))
         player.board.drawBoardShip()
-        ship.changeOrientation(input("Please enter ship orientation (v/h):"))
-        while not player.board.insertShip(ship,int(input("Enter the position: "))):
-            print("Incorrect Input.")
+        while not ship.changeOrientation(input("Please enter ship orientation (v/h):")):
+            pass
+        while not player.board.insertShip(ship,input("Enter the position: ")):
+            pass
         clearScreen()
 
     print("Final Board:")
@@ -25,7 +26,12 @@ def initPlayer(game):
 def initGame():
     clearScreen()
     player1 = input("Enter Player 1 Name: ")
-    player2 = input("Enter Player 2 Name: ")
+    while True:
+        player2 = input("Enter Player 2 Name: ")
+        if player1 == player2:
+            print("Error: Player names cannot be the same")
+        else:
+            break
     game = Game(player1,player2)
     clearScreen()
     initPlayer(game)

@@ -11,14 +11,18 @@ class Ship(object):
         self.status = 1
         
     def changeOrientation(self,orientation):
-        if orientation and orientation[0].capitalize() == "V":
-            self.orientation = 1
-        elif orientation and orientation[0].capitalize() == "H":
-            self.orientation = 0
-        else:
-            print("Incorrect Orientation: Orientation could not be changed. Current orientation is {}".format("vertical" if self.orientation else "horizontal"))
+        try:
+            if orientation.capitalize() == "V":
+                self.orientation = 1
+            elif orientation.capitalize() == "H":
+                self.orientation = 0
+            else: 
+                raise ValueError("Orientation should be 'v' or 'h' ")
+        except:
+            print("Incorrect Orientation: Orientation could not be changed")
             return False
-        return True
+        else:    
+            return True
     
     def hit(self):
         self.health -=1

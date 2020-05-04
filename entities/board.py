@@ -9,10 +9,17 @@ class Board(object):
     def getRC(self,position):
         row = position//self.columns
         column = position % self.columns
+        if row >=self.rows:
+            raise ValueError("Position out of bounds")
         return row,column
     
     def insertShip(self,ship,position):
-        row,column = self.getRC(position)
+        try:
+            position = int(position)
+            row,column = self.getRC(position)
+        except:
+            print("Incorrect Input.")
+            return False
         currRC = lambda x: [row+x,column] if (ship.orientation) else [row,column+x]
         def reset(x):
             for j in range(x):
@@ -20,16 +27,17 @@ class Board(object):
                 self.board[r1][c1][1] = None
         for i in range(ship.size):
             r,c = currRC(i)
-            if r>= self.rows or c>= self.columns:
+            try:
+                if r>= self.rows or c>= self.columns:
+                    raise ValueError("Ship Out of bounds")
+                elif self.board[r][c][1] != None:
+                    raise ValueError("Ship already exists at this position")
+                else:
+                    self.board[r][c][1] = ship
+            except ValueError as err:
                 reset(i)
-                print("Ship Out of bounds")
+                print("Incorrect Input. ",err)
                 return False
-            elif self.board[r][c][1] != None:
-                reset(i)
-                print("Ship already exists at this position")
-                return False
-            else:
-                self.board[r][c][1] = ship
         return True
                 
             
@@ -47,7 +55,7 @@ class Board(object):
                 self.board[r][c][1].hit()
             return True
         else:
-            return False
+            raise ValueError("Position already attacked")
         
     def drawBoardAttack(self):
         for i in range(self.rows):

@@ -7,7 +7,18 @@ def playerTurn(game):
     game.curr.board.drawBoardShip()
     print("Attack Board:")
     game.curr.opponent.board.drawBoardAttack()
-    attack = int(input("Enter the position to attack:"))
-    clearScreen()
-    game.curr.opponent.board.attack(attack)
-    game.changeCurrentPlayer()
+    while True:
+        try:
+            attack = int(input("Enter the position to attack:"))      
+            message = game.curr.opponent.board.attack(attack)
+        except TypeError:
+            print("Please enter valid position.")
+        except:
+            print("Invalid Input.")
+        else:
+            clearScreen()
+            print(message)
+            game.changeCurrentPlayer()
+            return
+        
+    

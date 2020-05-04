@@ -16,7 +16,7 @@ def playerTurn(game):
         except ValueError as err:
             print("Invalid Input. ",err)
         except:
-            print("Oops Something went wrong")
+            print("\nOops Something went wrong")
         else:
             clearScreen()
             print(message)

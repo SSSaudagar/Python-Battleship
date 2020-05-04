@@ -13,8 +13,10 @@ def playerTurn(game):
             message = game.curr.opponent.board.attack(attack)
         except TypeError:
             print("Please enter valid position.")
+        except ValueError as err:
+            print("Invalid Input. ",err)
         except:
-            print("Invalid Input.")
+            print("Oops Something went wrong")
         else:
             clearScreen()
             print(message)

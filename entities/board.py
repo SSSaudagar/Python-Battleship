@@ -47,12 +47,12 @@ class Board(object):
         if self.board[r][c][0] == 'e':
             if self.board[r][c][1] is None:
                 self.board[r][c][0] = 'm'
-                print('\nAttack Missed at position {}'.format(position))
-                return
+                return 'Attack Missed at position {}'.format(position)
             else:
                 self.board[r][c][0] = 'h'
-                print("\nShip Hit at position {}".format(position))
                 self.board[r][c][1].hit()
+                return "Ship Hit at position {}".format(position)
+                
             return True
         else:
             raise ValueError("Position already attacked")
